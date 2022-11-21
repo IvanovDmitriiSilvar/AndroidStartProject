@@ -1,55 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center|top"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".MainActivity">
 
-<!--    <TextView-->
-<!--        android:id="@+id/textView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="1"-->
-<!--        android:text="Hello World!"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="1"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:text="Long long long text very long text very very very long text iuyfg f khf kjgg jgkjckhgdhkdhkfkhgkg jkgjlhgljgig ugbjgjl"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/textView" />-->
+    <TextView
+        android:id="@+id/normal"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#03A9F4"
+        android:gravity="end"
+        android:padding="25dp"
+        android:text="Width:200dp"
+        android:textColor="#FFF"
+        android:textSize="26sp"
+        android:textStyle="normal" />
 
     <TextView
-        android:id="@+id/text"
-        android:layout_weight="1"
+        android:id="@+id/bold"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:text="Android is the best"
-        android:textSize="40sp" />
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:background="#00f"
+        android:gravity="bottom|end"
+        android:padding="30dp"
+        android:text="Width:wrap_content"
+        android:textColor="#FFF"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
-    <!-- это просто пустой блок. Текст есть, но не отображается. Может быть фон. Можно обработать нажатие. -->
-    <View
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/italic"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:text="This is View. Only View."
-    />
-    <Button
-        android:id="@+id/button"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:text="Approve"
-        />
+        android:layout_marginTop="10dp"
+        android:background="#00f"
+        android:padding="10dp"
+        android:text="Width:match_parent"
+        android:textColor="#FFF"
+        android:textSize="26sp"
+        android:textStyle="italic" />
+
 </LinearLayout>
