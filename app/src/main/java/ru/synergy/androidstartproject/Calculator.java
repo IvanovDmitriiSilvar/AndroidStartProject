@@ -69,6 +69,7 @@ public class Calculator extends AppCompatActivity {
         super.onDestroy();
     }
 
+
     public void calculateAnswer() {
             EditText numOne = (EditText) findViewById(R.id.editTextNumberDecimal);
             EditText numTwo = (EditText) findViewById(R.id.editTextNumberDecimal2);
