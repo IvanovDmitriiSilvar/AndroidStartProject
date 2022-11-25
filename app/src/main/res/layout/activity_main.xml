@@ -149,8 +149,7 @@
         android:layout_height="wrap_content"
         android:text="View_hide1"
         android:visibility="gone"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTop="parent" />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/view_hide2"
