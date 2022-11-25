@@ -14,10 +14,13 @@ import android.widget.Toast;
 public class Calculator extends AppCompatActivity {
 
     private static final String LogcatTag = "CALCULATOR_ACTIVITY";
+    private static final String LifeCycleTag = "LIFECYCLE";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(LifeCycleTag, "I'm onCreate(), and I'm started");
         setContentView(R.layout.activity_calculator);
 
         final Button calculate = (Button) findViewById(R.id.calc);
@@ -29,7 +32,44 @@ public class Calculator extends AppCompatActivity {
             }
         });
     }
-        public void calculateAnswer() {
+
+    @Override
+    protected void onStart() {
+        Log.d(LifeCycleTag, "I'm onStart(), and I'm started");
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d(LifeCycleTag, "I'm onPause(), and I'm started");
+        super.onPause();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.d(LifeCycleTag, "I'm onRestart(), and I'm started");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(LifeCycleTag, "I'm onResume(), and I'm started");
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.d(LifeCycleTag, "I'm onStop(), and I'm started");
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.d(LifeCycleTag, "I'm onDestroy(), and I'm started");
+        super.onDestroy();
+    }
+
+    public void calculateAnswer() {
             EditText numOne = (EditText) findViewById(R.id.editTextNumberDecimal);
             EditText numTwo = (EditText) findViewById(R.id.editTextNumberDecimal2);
 
@@ -42,8 +82,15 @@ public class Calculator extends AppCompatActivity {
 
             Log.d(LogcatTag, "All Views have been found");
 
-            float n1 = Integer.parseInt(numOne.getText().toString());
-            float n2 = Integer.parseInt(numTwo.getText().toString());
+            float n1, n2;
+            String s = numOne.getText().toString();
+            Log.d(LogcatTag, "s = \"" + s + "\", s.length() = " + s.length());
+
+            if (s.length() > 0) n1 = Float.parseFloat(s);
+            else n1 = 0;
+            s = numTwo.getText().toString();
+            if (s.length() > 0) n2 = Float.parseFloat(s);
+            else n2 = 0;
 
             Log.d(LogcatTag, "Successfully grabbed data from input fields");
             Log.d(LogcatTag, "n1 = " + n1 + ", n2 = " + n2);
@@ -53,15 +100,15 @@ public class Calculator extends AppCompatActivity {
                 Log.d(LogcatTag, "Operation is addition");
                 res = n1 + n2;
             }
-            if (sub.isChecked()) {
+            else if (sub.isChecked()) {
                 Log.d(LogcatTag, "Operation is subsctraction");
                 res = n1 - n2;
             }
-            if (mul.isChecked()) {
+            else if (mul.isChecked()) {
                 Log.d(LogcatTag, "Operation is multiply");
                 res = n1 * n2;
             }
-            if (div.isChecked()) {
+            else if (div.isChecked()) {
                 Log.d(LogcatTag, "Operation is divide");
                 if (n2 == 0) {
                    // Toast.makeText(this, "Number two cannot be zero!", Toast.LENGTH_SHORT).show();
@@ -71,6 +118,11 @@ public class Calculator extends AppCompatActivity {
                     return;
                 }
                 res = n1 / n2;
+            }
+            else {
+                Log.d(LogcatTag, "Operation is not chosen");
+                answer.setText("Please choose operation");
+                return;
             }
 
             Log.d(LogcatTag, "The result of operation is " + res);
