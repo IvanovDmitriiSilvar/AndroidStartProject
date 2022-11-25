@@ -82,15 +82,13 @@ public class Calculator extends AppCompatActivity {
 
             Log.d(LogcatTag, "All Views have been found");
 
-            float n1, n2;
+            float n1=0, n2=0;
             String s = numOne.getText().toString();
             Log.d(LogcatTag, "s = \"" + s + "\", s.length() = " + s.length());
 
             if (s.length() > 0) n1 = Float.parseFloat(s);
-            else n1 = 0;
             s = numTwo.getText().toString();
             if (s.length() > 0) n2 = Float.parseFloat(s);
-            else n2 = 0;
 
             Log.d(LogcatTag, "Successfully grabbed data from input fields");
             Log.d(LogcatTag, "n1 = " + n1 + ", n2 = " + n2);
