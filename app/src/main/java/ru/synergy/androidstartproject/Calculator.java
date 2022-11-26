@@ -2,12 +2,16 @@ package ru.synergy.androidstartproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
 import android.widget.RadioButton;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +35,17 @@ public class Calculator extends AppCompatActivity {
                 calculateAnswer();
             }
         });
+
+        //Context training
+//        TextView textView = new TextView(this);
+//        ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), );
+//
+//        //доступ из класса Activity - наследник Context
+//        getSystemService(LAYOUT_INFLATER_SERVICE);
+//
+//        //Shared Preferences - доступ с использованием контекста приложения
+//        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
+        ///////
     }
 
     @Override
@@ -110,7 +125,7 @@ public class Calculator extends AppCompatActivity {
             else if (div.isChecked()) {
                 Log.d(LogcatTag, "Operation is divide");
                 if (n2 == 0) {
-                   // Toast.makeText(this, "Number two cannot be zero!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Number two cannot be zero!", Toast.LENGTH_SHORT).show();
                     Log.d(LogcatTag, "WARNING! Dividing by zero! Finishing!");
                     Log.d(LogcatTag, "-------------------------------------------");
                     answer.setText("Number two cannot be zero! Cannot divide by zero!");
@@ -127,5 +142,10 @@ public class Calculator extends AppCompatActivity {
             Log.d(LogcatTag, "The result of operation is " + res);
             answer.setText("The answer is " + res);
             Log.d(LogcatTag, "-------------------------------------------");
+
+            //как получить контекст:
+            Context contextApp = getApplicationContext();
+            // Context contextLocal = getContext(); //это здесь не работает и вроде бы и не должно
+            Context context = getBaseContext();
         }
 }
