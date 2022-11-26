@@ -3,6 +3,7 @@ package ru.synergy.androidstartproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,15 +28,6 @@ public class Calculator extends AppCompatActivity {
         Log.d(LifeCycleTag, "I'm onCreate(), and I'm started");
         setContentView(R.layout.activity_calculator);
 
-        final Button calculate = (Button) findViewById(R.id.calc);
-        calculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(LogcatTag, "Button have been pushed");
-                calculateAnswer();
-            }
-        });
-
         //Context training
 //        TextView textView = new TextView(this);
 //        ListAdapter adapter = new SimpleCursorAdapter(getApplicationContext(), );
@@ -46,6 +38,24 @@ public class Calculator extends AppCompatActivity {
 //        //Shared Preferences - доступ с использованием контекста приложения
 //        SharedPreferences prefs = getApplicationContext().getSharedPreferences("PREFS", MODE_PRIVATE);
         ///////
+
+        //// intent - посылка. Иногда говорят - намерение, но не очень. Бывают явные и неявные
+
+
+
+        ////
+
+        final Button calculate = (Button) findViewById(R.id.calc);
+        calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(LogcatTag, "Button have been pushed");
+                calculateAnswer();
+                Intent i = new Intent(Calculator.this, MainActivity.class);//написать письмо
+                startActivity(i); //отправить его. Это явный интент
+            }
+        });
+
     }
 
     @Override
