@@ -129,6 +129,28 @@
         android:layout_marginEnd="50dp"
         android:background="?android:attr/listDivider" />
 
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Write smth here"
+        android:layout_alignStart="@id/divider"
+        android:layout_alignEnd="@id/divider"
+        android:layout_below="@+id/divider"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/buttonStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et"
+        android:layout_alignStart="@+id/divider"
+        android:layout_alignEnd="@+id/divider"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="0dp"
+        android:text="Start Simple"
+        android:textSize="16sp" />
+
     <Button
         android:id="@+id/buttonCatch"
         android:layout_width="match_parent"
@@ -155,17 +177,14 @@
         android:text="Give it back to me"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/buttonStart"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/divider"
         android:layout_alignStart="@+id/divider"
         android:layout_alignEnd="@+id/divider"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="0dp"
-        android:text="Start Simple"
-        android:textSize="16sp" />
-
+        android:layout_below="@id/buttonBack"
+        android:layout_marginTop="10dp"
+        android:textSize="34sp"
+        />
 </RelativeLayout>
