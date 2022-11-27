@@ -1,5 +1,9 @@
 package ru.synergy.androidstartproject;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -16,10 +20,22 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final int REQ_C = 1;
     EditText et;
     TextView tv;
+    
+    ActivityResultLauncher<Intent> mStartActivityForResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Intent intent = result.getData();
+                    tv.setText(intent.getStringExtra("tv"));
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +66,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     public void onClick(View v){
         Intent i;
-        int REQ_C = 1;
         switch(v.getId()) {
             case R.id.buttonStart:
                 i = new Intent(this, MainActivity2.class);
@@ -62,9 +77,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 i.putExtra("et", eText);
                 startActivity(i);
                 break;
-//            case R.id.buttonBack:
-//                i = new Intent(this, ComeBackActivity.class);
-//                startActivityForResult(i, REQ_C);
+            case R.id.buttonBack:
+                i = new Intent(this, ComeBackActivity.class);
+                mStartActivityForResult.launch(i);
         }
     }
 }

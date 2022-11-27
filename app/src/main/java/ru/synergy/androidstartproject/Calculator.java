@@ -51,8 +51,8 @@ public class Calculator extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(LogcatTag, "Button have been pushed");
                 calculateAnswer();
-                Intent i = new Intent(Calculator.this, MainActivity.class);//написать письмо
-                startActivity(i); //отправить его. Это явный интент
+//                Intent i = new Intent(Calculator.this, MainActivity.class);//написать письмо
+//                startActivity(i); //отправить его. Это явный интент
             }
         });
 
@@ -107,6 +107,13 @@ public class Calculator extends AppCompatActivity {
             TextView answer = (TextView) findViewById(R.id.res);
 
             Log.d(LogcatTag, "All Views have been found");
+
+            try{
+                int a = 25/0;
+            } catch (ArithmeticException e)
+            {
+                e.printStackTrace();
+            }
 
             float n1=0, n2=0;
             String s = numOne.getText().toString();
